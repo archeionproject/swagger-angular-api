@@ -1,0 +1,26 @@
+{
+  "name": "@archeion/swagger-angular-api",
+  "version": "1.0.0",
+  "description": "A library that can convert an OpenAPI spec to angular services",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.mjs"
+  },
+  "keywords": [
+    "Angular",
+    "Swagger",
+    "OpenAPI"
+  ],
+  "author": "Cristiano Aguzzi",
+  "license": "MIT",
+  "peerDependencies": {
+    "swagger-typescript-api": "^13.0.7"
+  },
+  "devDependencies": {
+    "@angular/common": "^18.0.4",
+    "@angular/core": "^18.0.4",
+    "@release-it/conventional-changelog": "^8.0.1",
+    "release-it": "^17.4.0",
+    "rxjs": "^7.8.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "git": {
+    "commitMessage": "chore(release): ${version}",
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Asset API release version ${version}"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "tagPrefix": "v",
+      "preset": {
+        "name": "angular"
+      },
+      "infile": "CHANGELOG.md"
+    }
+  }
+}

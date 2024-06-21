@@ -1,0 +1,681 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/assets": {
+            "get": {
+                "operationId": "AssetController_findAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AssetDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "AssetController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAssetDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/assets/{id}": {
+            "get": {
+                "operationId": "AssetController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/assets/{id}/nodes/{nodeId}/instantiate": {
+            "post": {
+                "operationId": "AssetController_instantiateNode",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nodeId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateNodeDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NodeDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/assets/{id}/nodes/{nodeId}/attach": {
+            "post": {
+                "operationId": "AssetController_attachNode",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nodeId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AttachAssetDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "assets"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/blueprints": {
+            "get": {
+                "operationId": "BlueprintController_findAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "blueprints"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "BlueprintController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateBlueprintDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "blueprints"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/blueprints/{id}": {
+            "get": {
+                "operationId": "BlueprintController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "blueprints"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "BlueprintController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBlueprintDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "blueprints"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "BlueprintController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "blueprints"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/templates/assets": {
+            "get": {
+                "operationId": "TemplateController_findAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "templates"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "TemplateController_create",
+                "parameters": [
+                    {
+                        "name": "orgId",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAssetTemplateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "templates"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        },
+        "/templates/assets/{id}": {
+            "get": {
+                "operationId": "TemplateController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "templates"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "put": {
+                "operationId": "TemplateController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAssetTemplateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "templates"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "TemplateController_delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "templates"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Asset API",
+        "description": "The Archeion Asset API",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "securitySchemes": {
+            "zitadel-jwt": {
+                "type": "openIdConnect",
+                "openIdConnectUrl": "http://localhost:8080/.well-known/openid-configuration",
+                "name": "Zitadel"
+            }
+        },
+        "schemas": {
+            "CreateAssetDTO": {
+                "type": "object",
+                "properties": {
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "templateId",
+                    "data"
+                ]
+            },
+            "AssetDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "type": "string"
+                    },
+                    "link": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "organizationId",
+                    "templateId",
+                    "link"
+                ]
+            },
+            "CreateNodeDTO": {
+                "type": "object",
+                "properties": {}
+            },
+            "BlueprintDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "schema": {
+                        "type": "object"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "schema",
+                    "createdAt",
+                    "updatedAt"
+                ]
+            },
+            "NodeDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "blueprint": {
+                        "$ref": "#/components/schemas/BlueprintDTO"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "data",
+                    "createdAt",
+                    "updatedAt",
+                    "blueprint"
+                ]
+            },
+            "AttachAssetDTO": {
+                "type": "object",
+                "properties": {}
+            },
+            "CreateBlueprintDTO": {
+                "type": "object",
+                "properties": {}
+            },
+            "UpdateBlueprintDTO": {
+                "type": "object",
+                "properties": {}
+            },
+            "CreateAssetTemplateDTO": {
+                "type": "object",
+                "properties": {}
+            }
+        }
+    }
+}
