@@ -1,6 +1,6 @@
 {
   "name": "@archeion/swagger-angular-api",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "A library that can convert an OpenAPI spec to angular services",
   "main": "index.js",
   "scripts": {
