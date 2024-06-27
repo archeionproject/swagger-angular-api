@@ -35,13 +35,15 @@ Here's an example of how to use the templates with `swagger-typescript-api`:
      url: 'https://your-api-spec-url.com/swagger.json',
      templates: path.resolve(__dirname, './node_modules/@archeion/swagger-angular-api/templates/angular'),
      // Currently only modular mode is supported.
-     modular: true
-     // Optionally you can add extras templates to generate index.ts
-     extraTemplates: [
-        {
-            name: 'index.ts', path: path.resolve(__dirname, './node_modules/@archeion/swagger-angular-api/templates/angular/extras/index.ejs') 
-        }
-    ]
+     modular: true,
+     // Optionally you can add options to personalize angular generation
+     angular: {
+        generateIndex: true,
+    },
+    hooks: {
+      // Don't forget to add onInit hook
+      onInit: initAngularTemplates
+    }
    })
      .then(() => {
        console.log('Angular services generated successfully!');

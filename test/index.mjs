@@ -1,5 +1,7 @@
 import { generateApi } from 'swagger-typescript-api';
 import path from 'path';
+import root from '../index.js';
+const {initAngularTemplates} = root;
 
 await generateApi({
     name: 'archeion-api',
@@ -9,9 +11,10 @@ await generateApi({
     generateClient: true,
     modular: true,
     addReadonly: true,
-    extraTemplates: [
-        {
-            name: 'index.ts', path: './templates/angular/extras/index.ejs' 
-        }
-    ]
+    angular: {
+        generateIndex: true,
+    },
+    hooks: {
+        onInit: initAngularTemplates
+    }
 });
