@@ -25,8 +25,8 @@ const optionsFieldWithResponse = {
 const realOptionsField = {
     name: "options",
     optional: true,
-    type: "RequestOptions & { observe: 'response' }",
-    defaultValue: "{observe: 'response'}",
+    type: "RequestOptions & { observe: 'response' | 'body' }",
+    defaultValue: "{observe: 'body'}",
 }
 
 const argToTmpl = ({ name, optional, type, defaultValue }) => `${name}${!defaultValue && optional ? '?' : ''}: ${type}${defaultValue ? ` = ${defaultValue}` : ''}`;
@@ -93,6 +93,6 @@ public <%~ route.routeName.usage %> (<%~ createArgs(realOptionsField) %>): <%~ `
         <%~ queryTmpl ? `params: ${queryTmpl},` : '' %>
         <%~ bodyTmpl ? `body: ${bodyTmpl},` : '' %>
         <%~ responseFormatTmpl ? `responseType: ${responseFormatTmpl},` : '' %>
-        ...options as unknown as {observe: "response"},
+        ...options as {observe: "response"},
     })
 }
