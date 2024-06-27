@@ -1,0 +1,8 @@
+<% const {routes, utils}=it; const { pascalCase }=utils; %>
+
+<% for (const route of routes.combined) { %>
+    export * from './<%~ pascalCase(route.moduleName) %>'
+<% } %>
+
+export * from './data-contracts'
+export * from './http-client'

@@ -36,6 +36,12 @@ Here's an example of how to use the templates with `swagger-typescript-api`:
      templates: path.resolve(__dirname, './node_modules/@archeion/swagger-angular-api/templates/angular'),
      // Currently only modular mode is supported.
      modular: true
+     // Optionally you can add extras templates to generate index.ts
+     extraTemplates: [
+        {
+            name: 'index.ts', path: path.resolve(__dirname, './node_modules/@archeion/swagger-angular-api/templates/angular/extras/index.ejs') 
+        }
+    ]
    })
      .then(() => {
        console.log('Angular services generated successfully!');

@@ -9,4 +9,9 @@ await generateApi({
     generateClient: true,
     modular: true,
     addReadonly: true,
+    extraTemplates: [
+        {
+            name: 'index.ts', path: './templates/angular/extras/index.ejs' 
+        }
+    ]
 });
