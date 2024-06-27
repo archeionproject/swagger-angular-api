@@ -1,5 +1,12 @@
 
 
+# [1.0.0-alpha.3](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2024-06-27)
+
+
+### Bug Fixes
+
+* procedure call default argument ([06fcd91](https://github.com/archeionproject/swagger-angular-api/commit/06fcd9116e18ac4c30b233f3ee3e22a26590c27e))
+
 # [1.0.0-alpha.2](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2024-06-27)
 
 
