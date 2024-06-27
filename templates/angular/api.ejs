@@ -18,7 +18,12 @@ import { RequestOptions } from "./<%~ config.fileNames.httpClient %>";
 
 @Injectable(<%~ config.angular?.providedIn ? `{providedIn: '${config.angular.providedIn}'}` : '' %>)
 export class <%= apiClassName %>Service {
-constructor(private readonly http: HttpClient, @Inject('API_BASE_URL') private readonly baseUrl: string = ''){}
+    private readonly base: string;
+constructor(private readonly http: HttpClient, 
+        @Inject('API_BASE_URL') baseUrl: string = '',
+        @Inject('<%= apiClassName %>_API_PATH') path: string = ''){
+            this.base = baseUrl+path;
+        }
     <% for (const route of routes) { %>
         <%~ includeFile('./procedure-call.ejs', { ...it, route }) %>
     <% } %>

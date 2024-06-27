@@ -88,7 +88,7 @@ public <%~ route.routeName.usage %> (<%~ createArgs(optionsFieldWithResponse) %>
 public <%~ route.routeName.usage %> (<%~ createArgs(realOptionsField) %>): <%~ `Observable<HttpResponse<${type}> | ${type}>` %> {
     return this.http.request<<%~ type %>>(
         '<%~ _.upperCase(method) %>',
-        this.baseUrl + `<%~ path %>`,
+        this.base + `<%~ path %>`,
         {
         <%~ queryTmpl ? `params: ${queryTmpl},` : '' %>
         <%~ bodyTmpl ? `body: ${bodyTmpl},` : '' %>
