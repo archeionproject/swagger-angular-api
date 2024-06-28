@@ -15,17 +15,17 @@ const isFetchTemplate = config.httpClientType === HTTP_CLIENT.FETCH;
 const basicOptionsField = {
     name: "options",
     optional: true,
-    type: "RequestOptions",
+    type: " Parameters<HttpClient['request']>['2']",
 }
 const optionsFieldWithResponse = {
     name: "options",
     optional: true,
-    type: "RequestOptions & { observe: 'response' }",
+    type: "Parameters<HttpClient['request']>['2'] & { observe: 'response' }",
 }
 const realOptionsField = {
     name: "options",
     optional: true,
-    type: "RequestOptions & { observe: 'response' | 'body' }",
+    type: "Parameters<HttpClient['request']>['2'] & { observe: 'response' | 'body' }",
     defaultValue: "{observe: 'body'}",
 }
 

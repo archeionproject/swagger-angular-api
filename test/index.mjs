@@ -8,7 +8,6 @@ await generateApi({
     output: path.resolve(process.cwd(), './test/types/__generated__'),
     templates: './templates/angular',
     input: path.resolve(process.cwd(), './test/swagger.json'),
-    generateClient: true,
     modular: true,
     addReadonly: true,
     angular: {
