@@ -1,5 +1,12 @@
 
 
+# [1.0.0-alpha.4](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2024-06-28)
+
+
+### Features
+
+* use Angular types for requests parameters ([aad276d](https://github.com/archeionproject/swagger-angular-api/commit/aad276df67e962229e9a13ada109d62563370a77))
+
 # [1.0.0-alpha.3](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2024-06-27)
 
 
