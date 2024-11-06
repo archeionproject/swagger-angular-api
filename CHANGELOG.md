@@ -1,5 +1,12 @@
 
 
+# [1.0.0-alpha.5](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2024-11-06)
+
+
+### Bug Fixes
+
+* **templates/angular/procedure-call:** overload selection for HttpResponse ([8dbaa04](https://github.com/archeionproject/swagger-angular-api/commit/8dbaa04c6acbdabab1890ed85dbab24b5a44f522))
+
 # [1.0.0-alpha.4](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2024-06-28)
 
 
