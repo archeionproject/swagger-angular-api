@@ -15,7 +15,7 @@ const isFetchTemplate = config.httpClientType === HTTP_CLIENT.FETCH;
 const basicOptionsField = {
     name: "options",
     optional: true,
-    type: " Parameters<HttpClient['request']>['2']",
+    type: "Omit<Parameters<HttpClient['request']>['2'], 'observe'>",
 }
 const optionsFieldWithResponse = {
     name: "options",
