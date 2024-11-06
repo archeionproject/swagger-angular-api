@@ -5,7 +5,7 @@
   },
   "github": {
     "release": true,
-    "releaseName": "Asset API release version ${version}"
+    "releaseName": "Swagger to angular release version ${version}"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
