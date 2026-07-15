@@ -11,6 +11,7 @@ const pathParams = _.values(parameters);
 const pathParamsNames = _.map(pathParams, "name");
 
 const isFetchTemplate = config.httpClientType === HTTP_CLIENT.FETCH;
+const isSSE = _.includes(contentTypes, "text/event-stream");
 
 const basicOptionsField = {
     name: "options",
@@ -27,6 +28,11 @@ const realOptionsField = {
     optional: true,
     type: "Parameters<HttpClient['request']>['2'] & { observe: 'response' | 'body' }",
     defaultValue: "{observe: 'body'}",
+}
+const sseOptionsField = {
+    name: "options",
+    optional: true,
+    type: "Partial<Omit<SseOptions, 'responseType'>>",
 }
 
 const argToTmpl = ({ name, optional, type, defaultValue }) => `${name}${!defaultValue && optional ? '?' : ''}: ${type}${defaultValue ? ` = ${defaultValue}` : ''}`;
@@ -83,6 +89,27 @@ const describeReturnType = () => {
 <%~ routeDocs.lines %>
 
  */
+<% if (isSSE) { %>
+public <%~ route.routeName.usage %> (<%~ createArgs(sseOptionsField) %>): Observable<<%~ type %>> {
+    return this.sseClient.stream(
+        this.base + `<%~ path %>`,
+        { ...options, responseType: 'event' },
+        {
+            <%~ queryTmpl ? `params: ${queryTmpl} as any,` : '' %>
+            <%~ bodyTmpl ? `body: ${bodyTmpl},` : '' %>
+        },
+        '<%~ _.upperCase(method) %>',
+    ).pipe(
+        map((event: Event): <%~ type %> => {
+            if (event.type === 'error') {
+                const sseError = event as SseErrorEvent;
+                throw sseError.error ?? new Error(sseError.message || `SSE request to <%~ path %> failed`);
+            }
+            return JSON.parse((event as MessageEvent).data) as <%~ type %>;
+        }),
+    );
+}
+<% } else { %>
 public <%~ route.routeName.usage %> (<%~ createArgs(basicOptionsField) %>): <%~ `Observable<${type}>` %>;
 public <%~ route.routeName.usage %> (<%~ createArgs(optionsFieldWithResponse) %>): <%~ `Observable<HttpResponse<${type}>>` %>;
 public <%~ route.routeName.usage %> (<%~ createArgs(realOptionsField) %>): <%~ `Observable<HttpResponse<${type}> | ${type}>` %> {
@@ -96,3 +123,4 @@ public <%~ route.routeName.usage %> (<%~ createArgs(realOptionsField) %>): <%~ `
         ...options as {observe: "response"},
     })
 }
+<% } %>

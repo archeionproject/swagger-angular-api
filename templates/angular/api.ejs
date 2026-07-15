@@ -1,6 +1,7 @@
 <% const { utils, route, config, modelTypes }=it; const { _, pascalCase, require }=utils; const
    
-   apiClassName=pascalCase(route.moduleName); const routes=route.routes; const dataContracts=_.map(modelTypes, "name"
+   apiClassName=pascalCase(route.moduleName); const routes=route.routes; const dataContracts=_.map(modelTypes, "name");
+   const hasSseRoutes = _.some(routes, (r) => _.includes(_.get(r, 'response.contentTypes'), 'text/event-stream')
     
     );
     
@@ -9,6 +10,10 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
+<% if (hasSseRoutes) { %>
+import { map } from "rxjs/operators";
+import { SseClient, SseErrorEvent, SseOptions } from "ngx-sse-client";
+<% } %>
 
 import { RequestOptions } from "./<%~ config.fileNames.httpClient %>";
 
@@ -19,7 +24,8 @@ import { RequestOptions } from "./<%~ config.fileNames.httpClient %>";
 @Injectable(<%~ config.angular?.providedIn ? `{providedIn: '${config.angular.providedIn}'}` : '' %>)
 export class <%= apiClassName %>Service {
     private readonly base: string;
-constructor(private readonly http: HttpClient, 
+constructor(private readonly http: HttpClient,
+        <% if (hasSseRoutes) { %>private readonly sseClient: SseClient,<% } %>
         @Inject('API_BASE_URL') baseUrl: string = '',
         @Inject('<%= apiClassName.toUpperCase() %>_API_PATH') path: string = ''){
             this.base = baseUrl+path;

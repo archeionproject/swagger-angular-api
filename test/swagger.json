@@ -529,6 +529,70 @@
                     }
                 ]
             }
+        },
+        "/pipeline/{id}/nodes/{key}/logs/stream": {
+            "get": {
+                "operationId": "streamNodeLogs",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "key",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tailLines",
+                        "required": false,
+                        "in": "query",
+                        "description": "Max lines per replica (default 200)",
+                        "example": 200,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "since",
+                        "required": false,
+                        "in": "query",
+                        "description": "Return logs emitted after this RFC3339 datetime",
+                        "schema": {
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "text/event-stream": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NodeLogStreamEventDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "nodes"
+                ],
+                "security": [
+                    {
+                        "zitadel-jwt": []
+                    }
+                ]
+            }
         }
     },
     "info": {
@@ -548,6 +612,45 @@
             }
         },
         "schemas": {
+            "LogLineDTO": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    },
+                    "logger": {
+                        "type": "string"
+                    },
+                    "extra": {
+                        "type": "object",
+                        "additionalProperties": true
+                    }
+                },
+                "required": [
+                    "message"
+                ]
+            },
+            "NodeLogStreamEventDTO": {
+                "type": "object",
+                "properties": {
+                    "replica": {
+                        "type": "string"
+                    },
+                    "line": {
+                        "$ref": "#/components/schemas/LogLineDTO"
+                    }
+                },
+                "required": [
+                    "replica",
+                    "line"
+                ]
+            },
             "CreateAssetDTO": {
                 "type": "object",
                 "properties": {

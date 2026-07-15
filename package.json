@@ -14,12 +14,19 @@
   "author": "Cristiano Aguzzi",
   "license": "MIT",
   "peerDependencies": {
+    "ngx-sse-client": "^18.0.0",
     "swagger-typescript-api": "^13.0.7"
+  },
+  "peerDependenciesMeta": {
+    "ngx-sse-client": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@angular/common": "^18.0.4",
     "@angular/core": "^18.0.4",
     "@release-it/conventional-changelog": "^8.0.1",
+    "ngx-sse-client": "^18.0.0",
     "release-it": "^17.4.0",
     "rxjs": "^7.8.1"
   }

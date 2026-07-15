@@ -59,6 +59,16 @@ Or you can head over [swagger-typescript-api](https://github.com/acacode/swagger
 $ npx swagger-typescript-api --templates ./node_modules/@archeion/swagger-angular-api/templates/angular --modular <OTHER_OPTIONS_HERE>
 ```
 
+### Server-Sent Events (SSE)
+
+Any operation whose response declares a `text/event-stream` content type is generated as an SSE-backed method using [`ngx-sse-client`](https://www.npmjs.com/package/ngx-sse-client) instead of `HttpClient`, returning a properly typed `Observable<T>` that parses each event's `data` as JSON. This is automatic — no extra configuration is required.
+
+If your OpenAPI spec contains such endpoints, install `ngx-sse-client` in your Angular application:
+
+```bash
+npm install ngx-sse-client
+```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
