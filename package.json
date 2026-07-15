@@ -25,9 +25,10 @@
   "devDependencies": {
     "@angular/common": "^18.0.4",
     "@angular/core": "^18.0.4",
-    "@release-it/conventional-changelog": "^8.0.1",
+    "@release-it/conventional-changelog": "^11.0.1",
+    "conventional-changelog-angular": "^9.2.1",
     "ngx-sse-client": "^18.0.0",
-    "release-it": "^17.4.0",
+    "release-it": "^20.2.1",
     "rxjs": "^7.8.1"
   }
 }
