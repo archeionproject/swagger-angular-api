@@ -100,10 +100,11 @@ public <%~ route.routeName.usage %> (<%~ createArgs(sseOptionsField) %>): Observ
         },
         '<%~ _.upperCase(method) %>',
     ).pipe(
+        filter((event: Event) => !(event.type === 'error' && (event as SseErrorEvent).error == null)),
         map((event: Event): <%~ type %> => {
             if (event.type === 'error') {
                 const sseError = event as SseErrorEvent;
-                throw sseError.error ?? new Error(sseError.message || `SSE request to <%~ path %> failed`);
+                throw sseError.error;
             }
             return JSON.parse((event as MessageEvent).data) as <%~ type %>;
         }),

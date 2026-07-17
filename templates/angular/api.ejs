@@ -11,7 +11,7 @@ import { Inject, Injectable } from "@angular/core";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 <% if (hasSseRoutes) { %>
-import { map } from "rxjs/operators";
+import { filter, map } from "rxjs/operators";
 import { SseClient, SseErrorEvent, SseOptions } from "ngx-sse-client";
 <% } %>
 
