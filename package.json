@@ -23,8 +23,8 @@
     }
   },
   "devDependencies": {
-    "@angular/common": "^18.0.4",
-    "@angular/core": "^18.0.4",
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
     "@release-it/conventional-changelog": "^11.0.1",
     "conventional-changelog-angular": "^9.2.1",
     "ngx-sse-client": "^21.0.0",
