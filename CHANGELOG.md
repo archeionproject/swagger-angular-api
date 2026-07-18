@@ -1,5 +1,7 @@
 # Changelog
 
+# [1.0.0-alpha.7](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2026-07-18)
+
 # [1.0.0-alpha.6](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2026-07-15)
 
 # [1.0.0-alpha.5](https://github.com/archeionproject/swagger-angular-api/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2024-11-06)
