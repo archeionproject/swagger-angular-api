@@ -100,12 +100,14 @@ public <%~ route.routeName.usage %> (<%~ createArgs(sseOptionsField) %>): Observ
         },
         '<%~ _.upperCase(method) %>',
     ).pipe(
-        // ngx-sse-client's benign reconnect marker, not a real failure.
-        filter((event: Event) => !(event.type === 'error' && (event as SseErrorEvent).error?.status === 1)),
+        // ngx-sse-client reconnects on its own after a dropped connection (no `error`) or a server close (`status: 1`).
+        filter((event: Event) => !(event instanceof ErrorEvent && (event.error == null || event.error.status === 1))),
         map((event: Event): <%~ type %> => {
+            if (event instanceof ErrorEvent) {
+                throw event.error;
+            }
             if (event.type === 'error') {
-                const sseError = event as SseErrorEvent;
-                throw sseError.error;
+                throw new Error((event as MessageEvent).data || `SSE request to <%~ path %> failed`);
             }
             return JSON.parse((event as MessageEvent).data) as <%~ type %>;
         }),
